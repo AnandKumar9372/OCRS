@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  lazyfolks:
+    container_name: lazyfolks
+    restart: unless_stopped
+    build:
+      context: .
+    ports:
+      - 8000:8000
+    environment:
+     -DEBUG=0
+    env_file:
+      - .env
+    image: onexspace/lazyfolks:prod
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./lazyfolks:/lazyfolks
